@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { User } from '@interfaces/users.interface';
+import { User } from '@/modules/users/interfaces/users.interface';
 import { UserService } from '../services/users.service';
 
 class UsersController {

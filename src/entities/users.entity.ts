@@ -1,7 +1,7 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Unique, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
-import { User } from '@interfaces/users.interface';
+import { User } from '@/modules/users/interfaces/users.interface';
 
-@Entity({ name: 'users', schema: 'inventory', database: 'sandbox' })
+@Entity({ name: 'users', schema: 'inventory' })
 export class UserEntity extends BaseEntity implements User {
 	@PrimaryGeneratedColumn()
 	id: number;

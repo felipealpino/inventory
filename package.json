@@ -8,7 +8,7 @@
 		"dev": "nodemon",
 		"build": "swc src -d dist --source-maps --copy-files",
 		"test": "jest --forceExit --coverage=true --detectOpenHandles",
-		"migration:create": "ts-node ./node_modules/typeorm/cli.js migration:create",
+		"migration:create": "npx typeorm migration:create -d src/database/migrations --name $NAME",
 		"migrate": "ts-node ./node_modules/typeorm/cli.js migration:run"
 	},
 	"keywords": [],
