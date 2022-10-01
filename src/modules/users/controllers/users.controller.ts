@@ -1,17 +1,21 @@
 import { Request, Response } from 'express';
-import { User } from '@/modules/users/interfaces/users.interface';
-import { UserService } from '../services/users.service';
+import { UserRepository } from '../repositories/users.repository';
+import { PaginationHelper } from '@/helpers/PaginationHelper/PaginationHelper';
+import ValidationHelper from '@/helpers/ValidationHelper/ValidationHelper';
 
 class UsersController {
-	public userService = new UserService();
+	public userRepository = new UserRepository();
 
-	public getUsers = async (req: Request, res: Response): Promise<void> => {
+	public listUsers = async (req: Request, res: Response): Promise<void> => {
 		try {
-			const findAllUsersData: User[] = await this.userService.findAllUser();
+			const stringParams = req.query ? req.query : {};
+			console.log(stringParams);
+			const listUsersSchema = PaginationHelper.getSearchSchema();
+			await ValidationHelper.validate(stringParams, listUsersSchema, true);
 
-			res.status(200).json({ data: findAllUsersData, message: 'findAll' });
+			const response = await this.userRepository.listUsersPaginated(stringParams);
+			res.status(200).json(response);
 		} catch (error) {
-			console.log(`error =>> `, error.messsage);
 			res.status(500).json({ message: error.message });
 		}
 	};

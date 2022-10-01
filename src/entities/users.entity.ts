@@ -10,7 +10,7 @@ export class UserEntity extends BaseEntity implements User {
 	@Unique(['email'])
 	email: string;
 
-	@Column()
+	@Column({ select: false })
 	password: string;
 
 	@Column()
