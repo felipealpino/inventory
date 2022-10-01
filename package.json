@@ -7,7 +7,7 @@
 		"start": "npm run build && node dist/server.js",
 		"dev": "nodemon",
 		"build": "swc src -d dist --source-maps --copy-files",
-		"test": "jest --forceExit --coverage=true --detectOpenHandles",
+		"test": "jest --coverage=true --detectOpenHandles",
 		"migration:create": "npx typeorm migration:create -d src/database/migrations --name $NAME",
 		"migrate": "ts-node ./node_modules/typeorm/cli.js migration:run"
 	},
