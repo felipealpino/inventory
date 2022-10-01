@@ -9,7 +9,6 @@ class UsersController {
 	public listUsers = async (req: Request, res: Response): Promise<void> => {
 		try {
 			const stringParams = req.query ? req.query : {};
-			console.log(stringParams);
 			const listUsersSchema = PaginationHelper.getSearchSchema();
 			await ValidationHelper.validate(stringParams, listUsersSchema, true);
 
