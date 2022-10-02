@@ -1,9 +1,10 @@
 import { Repository, SelectQueryBuilder } from 'typeorm';
-import { UserEntity } from '@entities/users.entity';
-import { Database } from '@/database/database';
-import { PaginationOptions, PaginationResponse } from '@/helpers/PaginationHelper/pagination.types';
+
+import { PaginationOptions, PaginationResponse } from '../../../helpers/PaginationHelper/pagination.types';
 import { PaginationHelper } from '../../../helpers/PaginationHelper/PaginationHelper';
 import { ListUserDto } from '../dtos/user.dtos';
+import { Database } from '../../../database/database';
+import { UserEntity } from '../../../entities/users.entity';
 
 class UserRepository extends Repository<UserEntity> {
 	public async listUsersPaginated(options: Partial<PaginationOptions>): Promise<PaginationResponse<ListUserDto>> {

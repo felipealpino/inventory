@@ -7,7 +7,7 @@ import hpp from 'hpp';
 import compression from 'compression';
 import { ConnectionOptions, createConnection } from 'typeorm';
 import dbConnection from '../ormconfig';
-import { Routes } from '@/routes/interfaces/routes.interface';
+import { Routes } from './routes/interfaces/routes.interface';
 
 class App {
 	public app: express.Application;

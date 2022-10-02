@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
+
+import { PaginationHelper } from '../../../helpers/PaginationHelper/PaginationHelper';
+import ValidationHelper from '../../../helpers/ValidationHelper/ValidationHelper';
 import { UserRepository } from '../repositories/users.repository';
-import { PaginationHelper } from '@/helpers/PaginationHelper/PaginationHelper';
-import ValidationHelper from '@/helpers/ValidationHelper/ValidationHelper';
 
 class UsersController {
 	public userRepository = new UserRepository();
