@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 import compression from 'compression';
 import { ConnectionOptions, createConnection } from 'typeorm';
+
 import dbConnection from '../ormconfig';
 import { Routes } from './routes/interfaces/routes.interface';
 
@@ -28,7 +29,7 @@ class App {
 		this.app.listen(this.port, () =>
 			console.log(`
       =================================
-      ======= ENV: ${this.env} =======
+      ======== ENV:${this.env} ========
       🚀 Rodando na porta ${this.port}
       =================================
     `)
@@ -54,6 +55,10 @@ class App {
 	}
 
 	private initializeRoutes(routes: Routes[]) {
+		this.app.get('/', (req, res) => {
+			res.status(200).send('Hello World!');
+		});
+
 		routes.forEach((route) => {
 			this.app.use('/', route.router);
 		});
